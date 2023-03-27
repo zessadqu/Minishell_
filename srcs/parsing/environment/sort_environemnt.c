@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:58:36 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/03/26 23:21:52 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/03/27 23:33:58 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,12 @@ void printEnv(t_data *data)
     tmp = data->env;
     while (tmp)
     {
-        ft_putstr_fd("declare -x ", data->exec->out_file); // is for test only to be replaced by exec->out_file
-        ft_putstr_fd(tmp->name, data->exec->out_file); // is for test only to be replaced by exec->out_file
-        ft_putstr_fd("=\"", data->exec->out_file); // is for test only to be replaced by exec->out_file
-        ft_putstr_fd(tmp->value, data->exec->out_file); // is for test only to be replaced by exec->out_file
-        ft_putstr_fd("\"",data->exec->out_file); // is for test only to be replaced by exec->out_file
-        ft_putstr_fd("\n", data->exec->out_file); // is for test only to be replaced by exec->out_file
+        ft_putstr_fd("declare -x ", data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+        ft_putstr_fd(tmp->name, data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+        ft_putstr_fd("=\"", data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+        ft_putstr_fd(tmp->value, data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+        ft_putstr_fd("\"",data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+        ft_putstr_fd("\n", data->cmds->out_file); // is for test only to be replaced by cmds->out_file
         tmp = tmp->next;
     }
 }
@@ -111,12 +111,12 @@ void    export0(t_data *data)
     tmp = sort_environment(data);
        while (tmp)
     {
-        ft_putstr_fd("declare -x ", data->exec->out_file); // is for test only to be replaced by exec->out_file
-        ft_putstr_fd(tmp->name, data->exec->out_file); // is for test only to be replaced by exec->out_file
-        ft_putstr_fd("=\"", data->exec->out_file); // is for test only to be replaced by exec->out_file
-        ft_putstr_fd(tmp->value, data->exec->out_file); // is for test only to be replaced by exec->out_file
-        ft_putstr_fd("\"",data->exec->out_file); // is for test only to be replaced by exec->out_file
-        ft_putstr_fd("\n", data->exec->out_file); // is for test only to be replaced by exec->out_file
+        ft_putstr_fd("declare -x ", data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+        ft_putstr_fd(tmp->name, data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+        ft_putstr_fd("=\"", data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+        ft_putstr_fd(tmp->value, data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+        ft_putstr_fd("\"",data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+        ft_putstr_fd("\n", data->cmds->out_file); // is for test only to be replaced by cmds->out_file
         tmp = tmp->next;
     }
 }

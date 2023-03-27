@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/27 22:51:15 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/27 23:54:45 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int main(int ac, char **av, char **envp)
 {
     t_data  data;
+    int status;
     int     buffer_size;
+    char path[PATH_MAX];
 
     (void)**av;
     if (ac == 1)
@@ -36,6 +38,7 @@ int main(int ac, char **av, char **envp)
             data.cmds = parse_line(&data);
             free_tokens_list(&data);
             /////// EXECUTION PART /////
+            execute_command(data.cmds,get_path(data.cmds->str[0],&data,&status ),envp);
             
         }
     }
