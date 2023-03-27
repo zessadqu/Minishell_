@@ -6,12 +6,12 @@
 #    By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 11:15:10 by ahammout          #+#    #+#              #
-#    Updated: 2023/03/27 23:28:25 by zessadqu         ###   ########.fr        #
+#    Updated: 2023/03/27 23:29:52 by zessadqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-
+#test
 CFLAGS = -Wall -Wextra -Werror -g
 
 READLINEFLAG =   -lreadline -lhistory
