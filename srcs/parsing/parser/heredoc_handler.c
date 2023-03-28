@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:37:05 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/27 22:47:24 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/28 00:44:20 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void    heredoc_action(t_data *data, int status, int fd[0])
         // exit_s = 130;
         close(fd[0]);
         close(fd[1]);
-        free_data(data);
+        free_tokens_list(data);
+        free_env_list(data);
         //// Get new prompt //
         main (1, NULL, data->envp_);
     }
