@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:06:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/03/28 00:05:31 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/03/28 22:04:16 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int pipes_redirection(t_exec *tmp, int file_, int i, t_data *data)
 {
     int         status;
 
-    if (printf("check rederction"))
+    if (redirection_handler(data))
     {
         if (tmp->in_file == -1)
             return (-1);

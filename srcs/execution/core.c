@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 21:01:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/03/27 17:25:29 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/03/28 22:07:37 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	cmd_call(t_exec *exec, t_data *data, char **envp, int her_file)
 		return ;
 	}
 
-	i = rederection_check(&exec, her_file);
-	if (!exec->str[0] || exec->in_file == -1 || i == 2 || !builtin(data, exec)) {
-		//free here
+	i = redirection_handler(data);
+	if (!exec->str[0] || exec->in_file == -1 || i == 0 || !builtin(data, exec))
+	{
 		return ;
 	}
 

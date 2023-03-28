@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/28 21:52:33 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/28 22:12:48 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int main(int ac, char **av, char **envp)
     int status;
     int     buffer_size;
     char path[PATH_MAX];
+    int   her_file;
 
     (void)**av;
     if (ac == 1)
@@ -39,7 +40,7 @@ int main(int ac, char **av, char **envp)
                 {
                     //// HANDLE CTRL + D
                     exitS = 2;
-                    ft_putstr_fd("exit", 1);
+                    ft_putstr_fd("\nexit\n", 1);
                     exit (exitS);
                 }
                 buffer_size = ft_strlen(data.buffer);
@@ -48,8 +49,8 @@ int main(int ac, char **av, char **envp)
             data.cmds = parse_line(&data);
             free_tokens_list(&data);
             /////// EXECUTION PART /////
-            execute_command(data.cmds,get_path(data.cmds->str[0],&data,&status ),envp);
-            
+            if (data.cmds)
+                cmd_call(data.cmds, &data, data.envp_,her_file);            
         }
     }
     return (0);
