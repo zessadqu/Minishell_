@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:06:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/03/27 17:03:31 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/03/28 00:05:31 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void    pipe_exe(int *pids, t_data  *data, t_exec *tmp, int i)
             ;
         else
         {
-            if (execve(get_path(tmp->str, data, &status),
+            if (execve(get_path(tmp->str[0], data, &status),
                     tmp->str, data->envp_) == -1)
             {
                 exitS = 127;
