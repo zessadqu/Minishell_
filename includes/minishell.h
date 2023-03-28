@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/28 22:07:09 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/03/28 22:31:53 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,8 @@ void            init_tokens_list(t_data *data);
 void            create_new_node(t_data *data, int *add_node);
 void            add_new_node(t_data *data);
 void            free_tokens_list(t_data *data);
-void            cmd_call(t_exec *exec, t_data *data, char **envp, int her_file);
+void            cmd_call(t_data *data, int her_file);
+int             count_pps(t_exec	*exec);
 
 ///////////////////////////////// ENVIRONMENT /////////////////////////////////
 
