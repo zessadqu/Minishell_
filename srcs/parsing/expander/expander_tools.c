@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 01:13:54 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/27 01:14:54 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/28 17:54:15 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int update_size(char *lexem, char *pids, char *value)
 
     len = 0;
     i = 0;
-    if (lexem && (ft_isdigit(lexem[i]) || lexem[i] == '@' || lexem[i] == '*'))
+    if (lexem && (ft_isdigit(lexem[i]) || lexem[i] == '@' || lexem[i] == '*' || lexem[i] == '?'))
     {
         i++;
         while (lexem[i])

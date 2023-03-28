@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/27 23:54:45 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/03/28 16:48:12 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+int exitS;
 
 int main(int ac, char **av, char **envp)
 {
@@ -31,7 +33,14 @@ int main(int ac, char **av, char **envp)
             data.err = 0;
             while (!buffer_size)
             {
-                data.buffer = readline("minishell$> ");
+                data.buffer = readline("(minishell@Developers)$> ");
+                if (!data.buffer)
+                {
+                    //// HANDLE CTRL + D
+                    exitS = 2;
+                    ft_putstr_fd("exit", 1);
+                    exit (exitS);
+                }
                 buffer_size = ft_strlen(data.buffer);
             }
             add_history(data.buffer);

@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 18:13:06 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/27 04:22:10 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/28 21:40:06 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,24 @@ char *get_var(t_data *data, char *lexem)
     return (var);
 }
 
-void expandable(t_data *data, char *lexem, char *pids)
+// void    exit_status(t_data *data, char *lexem, char *pids)
+// {
+//     t_reference ref;
+//     char        *exit_status;
+
+//     ref.i = 0;
+//     ref.j = 0;
+//     ref.l = 0;
+//     exit_status = ft_itoa(exitS);
+//     data->tokens->lex = malloc(sizeof(char) * (update_size(lexem, pids, NULL) + ft_strlen(exit_status)));
+//     while (pids[ref.j + 1])
+//         data->tokens->lex[ref.l++] = pids[ref.j++];
+//     while (exit_status[ref.i])
+//         data->tokens->lex[ref.l++] = exit_status[ref.i++];
+//     while ()
+// }
+
+void    expandable(t_data *data, char *lexem, char *pids)
 {
     char    *value;
     int     i;
@@ -112,6 +129,8 @@ void expandable(t_data *data, char *lexem, char *pids)
     value = get_value(data, get_var(data, lexem + i));
     if (value)
         var_exist(data, pids, value);
+    // else if (lexem[i] == '?')
+    //     exit_status(data, lexem + i, pids);
     else
         var_not_exist(data, lexem + i, pids);
     free(value);

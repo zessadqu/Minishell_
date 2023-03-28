@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/27 23:08:42 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/28 15:52:26 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-int exitS;
+extern int exitS;
 
 enum
 {
