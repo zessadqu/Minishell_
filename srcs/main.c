@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/28 22:40:25 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/03/29 04:11:19 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int main(int ac, char **av, char **envp)
                 data.buffer = readline("(minishell@Developers)$> ");
                 if (!data.buffer)
                 {
-                    //// HANDLE CTRL + D
                     exitS = 2;
                     ft_putstr_fd("\nexit\n", 1);
                     exit (exitS);
@@ -48,9 +47,10 @@ int main(int ac, char **av, char **envp)
             add_history(data.buffer);
             data.cmds = parse_line(&data);
             free_tokens_list(&data);
+
             /////// EXECUTION PART /////
             if (data.cmds)
-                cmd_call(&data,her_file);            
+                cmd_call(&data,her_file);
         }
     }
     return (0);
