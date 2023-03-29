@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:36:39 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/27 23:37:18 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/03/29 21:17:29 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char    **get_cmd_args(t_data *data)
     char        **str;
 
     ref.i = 0;
-    str = malloc(sizeof(char *) * get_size(data));
+    str = malloc(sizeof(char *) * (get_size(data) + 1));
     if (!str)
         exit_error(data, "Minishell: Allocation failed.");
     while (data->tokens && !is_redirection(data->tokens->type) && data->tokens->type != PIPE)

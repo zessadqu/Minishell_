@@ -6,15 +6,16 @@
 #    By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 11:15:10 by ahammout          #+#    #+#              #
-#    Updated: 2023/03/28 22:06:36 by zessadqu         ###   ########.fr        #
+#    Updated: 2023/03/29 21:32:35 by zessadqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
+# -fsanitize=address
+CC = gcc  -fsanitize=address
 
 #CFLAGS = -Wall -Wextra -Werror -g
 
-READLINEFLAG =   -lreadline -lhistory
+READLINEFLAG =   -lreadline 
 
 LIBFT = libft/libft.a
 

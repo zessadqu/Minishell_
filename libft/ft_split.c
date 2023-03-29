@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 14:34:06 by ahammout          #+#    #+#             */
-/*   Updated: 2021/11/17 18:08:11 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/29 21:33:53 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 static	void	ft_free(size_t count_words, char **newtab)
@@ -75,7 +76,7 @@ char	**ft_split(char const *s, char c)
 	count_words = 0;
 	if (!s)
 		return (0);
-	newtab = malloc(sizeof(char *) * number_of_words(s, c) + 1);
+	newtab = malloc(sizeof(char *) * (number_of_words(s, c) + 1));
 	if (!newtab)
 		return (0);
 	while (count_words < number_of_words(s, c))

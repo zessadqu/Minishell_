@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:24:41 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/03/29 00:11:50 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/29 21:04:14 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,18 @@ static char    *extract_name(char *str, bool *append)
         int     i;
         char    *name;
 
-        i = 0;
+        i = 1;
         while (str[i] && str[i] != '=')
                 i++;
         if (str[i] == '=' && check_append(str))
                 *append = true;
-        if(append)
+        if(*append)
         {
-                name = ft_substr(str, 0, i);
+                name = ft_substr(str, 0, i - 1);
         }
         else
         {
-                name = ft_substr(str, 0, i + 1);
+                name = ft_substr(str, 0, i);
         }
         if(errorIn(name))
         {
@@ -87,11 +87,14 @@ int errorIn(const char* str)
 
 static t_env *find_env_node(t_env *env, const char *name)
 {
-        while (env)
+        t_env   *tmp;
+
+        tmp = env;
+        while (tmp)
         {
-                if (!ft_strcmp(env->name, name))
-                        return env;
-        env = env->next;
+                if (!ft_strcmp(tmp->name, name))
+                        return tmp;
+        tmp = tmp->next;
         }
         return NULL;
 }
