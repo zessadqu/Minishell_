@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 01:13:54 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/28 17:54:15 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/29 23:22:14 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int update_size(char *lexem, char *pids, char *value)
         }
     }
     if (value)
-        return ((ft_strlen(pids) - 1) + ft_strlen(value));
-    return (len + (ft_strlen(pids) - 1));
+        return ((ft_strlen(pids)) + ft_strlen(value));
+    return (len + (ft_strlen(pids)));
 }

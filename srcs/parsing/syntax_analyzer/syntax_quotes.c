@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 18:23:06 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/10 19:44:13 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/29 22:51:15 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void    abs_syntax(t_data *data, int lexem_len, int n_quotes)
     }
     else
     {
-        data->tokens->lex = malloc(sizeof(char) * (lexem_len - n_quotes));
+        data->tokens->lex = malloc(sizeof(char) * (lexem_len - n_quotes) + 1);
         if (!data->tokens->lex)
             exit_error(data, "Minishell: Allocation failed.");
         while (lexem[ref.i] == data->tokens->type)

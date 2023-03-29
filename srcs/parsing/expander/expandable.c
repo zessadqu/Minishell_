@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 18:13:06 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/29 04:08:24 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/29 23:17:55 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,16 @@ char *get_var(t_data *data, char *lexem)
 
     len = 0;
     i = 0;
-    while (lexem[len] && (ft_isalpha(lexem[len]) || ft_isdigit(lexem[len]) || lexem[len] == '_' || lexem[len] == '@' || lexem[len] == '*'))
+    while (lexem[len] && (ft_isalpha(lexem[len]) || \
+        ft_isdigit(lexem[len]) || lexem[len] == '_' || \
+        lexem[len] == '@' || lexem[len] == '*'))
         len++;
-    var = malloc(sizeof(char) * len);
+    var = malloc(sizeof(char) * len + 1);
     if (!var)
         exit_error(data, "Minishell: Allocation failed.");
-    while (lexem[i] && (ft_isalpha(lexem[i]) || ft_isdigit(lexem[i]) || lexem[i] == '_' || lexem[i] == '@' || lexem[len] == '*'))
+    while (lexem[i] && (ft_isalpha(lexem[i]) || \
+        ft_isdigit(lexem[i]) || lexem[i] == '_' || \
+        lexem[i] == '@' || lexem[len] == '*'))
     {
         var[i] = lexem[i];
         i++;

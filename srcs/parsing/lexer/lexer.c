@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:13:35 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/28 17:39:15 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/29 22:58:20 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,17 @@ int expand(t_data *data, char *lexem)
     ref.l = 0;
     while (lexem[ref.l] == EXPAND_ || lexem[ref.l] == '@' || lexem[ref.l] == '*')
         ref.l++;
-    while (ft_isalpha(lexem[ref.l]) || ft_isdigit(lexem[ref.l]) || lexem[ref.l] == '_' || lexem[ref.l] == '?')
+    while (ft_isalpha(lexem[ref.l]) || ft_isdigit(lexem[ref.l]) \
+        || lexem[ref.l] == '_' || lexem[ref.l] == '?')
         ref.l++;
-    data->tokens->lex = malloc(sizeof(char) * ref.l);
+    data->tokens->lex = malloc(sizeof(char) * ref.l + 1);
     if (!data->tokens->lex)
         exit_error(data, "Minishell: Allocation failed.");
-    while (lexem[ref.i] == EXPAND_ || lexem[ref.i] == '@' || lexem[ref.i] == '*')
+    while (lexem[ref.i] == EXPAND_ || lexem[ref.i] == '@' \
+        || lexem[ref.i] == '*')
         data->tokens->lex[ref.j++] = lexem[ref.i++];
-    while (ft_isalpha(lexem[ref.i]) || ft_isdigit(lexem[ref.i]) || lexem[ref.i] == '_' || lexem[ref.i] == '?')
+    while (ft_isalpha(lexem[ref.i]) || ft_isdigit(lexem[ref.i]) \
+        || lexem[ref.i] == '_' || lexem[ref.i] == '?')
         data->tokens->lex[ref.j++] = lexem[ref.i++];
     data->tokens->lex[ref.j] = '\0';
     data->tokens->type = EXPAND_;

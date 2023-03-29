@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 18:12:56 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/19 23:53:03 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/29 23:25:14 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int update_size_(char *lexem, char *pids)
             len++;
         i++;
     }
-    return (len);
+    return (len + 1);
 }
 
 void    non_param (t_data *data, char *lexem, char *pids)
