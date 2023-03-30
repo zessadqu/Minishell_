@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 01:55:15 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/03/07 20:39:12 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/03/30 01:39:47 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,19 @@ static void	auxiliary(t_exec	*exec, int i)
 {
 	char	**rest;
 	int		j;
-
-	if (exec->flg[i] == '1')
+	
+	j = 0;
+	rest = ft_split(exec->str[i], ' ');
+	while (rest[j])
 	{
-		j = 0;
-		rest = ft_split(exec->str[i], ' ');
-		while (rest[j])
-		{
-			ft_putstr_fd(rest[j], exec->out_file);
-			if (rest[j + 1])
-				ft_putstr_fd(" ", exec->out_file);
-			j++;
+		ft_putstr_fd(rest[j], exec->out_file);
+		if (rest[j + 1])
+			ft_putstr_fd(" ", exec->out_file);
+		j++;
 		}
 		free_tab(rest);
-	}
-	else
-		ft_putstr_fd(exec->str[i], exec->out_file);
+		
+		//ft_putstr_fd(exec->str[i], exec->out_file);
 }
 
 static	int	option(t_exec	*exec, bool	*mode)
