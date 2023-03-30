@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 21:01:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/03/28 22:54:05 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/03/30 01:56:56 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,14 @@ void	cmd_call(t_data *data, int her_file)
 	}
 
 	path = get_path(data->cmds->str[0], data, &check);
-	execute_command(data->cmds, path, data->envp_);
+	if (path)
+		execute_command(data->cmds, path, data->envp_);
+	else
+	{
+		ft_putstr_fd("minishell: command not found: ", 2);
+		ft_putstr_fd(data->cmds->str[0], 2);
+		ft_putstr_fd("\n", 2);
+	}
 
 	if (!check) {
 		free(path);
