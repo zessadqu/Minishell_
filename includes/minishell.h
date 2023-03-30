@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/30 17:42:17 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/03/30 21:12:26 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ enum
     KEYWORD = -1,
 };
 
-typedef struct  s_reference
+typedef struct  s_ref
 {
     int i;
     int j;
     int l;
-}               t_reference;
+}               t_ref;
 
 typedef struct  s_env
 {
@@ -79,20 +79,20 @@ typedef struct  s_exec
     struct s_exec *next;
 }               t_exec;
 
-typedef struct s_pipe
+typedef struct  s_pipe
 {
     int p_c;
     int **p_fd;
-} t_pipe;
+}               t_pipe;
 
-typedef struct s_vars
+typedef struct  s_vars
 {
     t_exec *tmp;
     int *pids;
     int status;
     int *std;
     int i;
-} t_vars;
+}               t_vars;
 
 typedef struct  s_data
 {
@@ -170,7 +170,7 @@ char            *get_var(t_data *data, char *lexem);
 char            *get_value(t_data *data, char *var);
 void            var_exist(t_data *data, char *pids, char *value);
 void            var_not_exist(t_data *data, char *lexem, char *pids);
-int             update_size(char *lexem, char *pids, char *value);
+int             update_size(char *lexem, char *pids, char *value, char *e_status);
 int             update_size_(char *lexem, char *pids);
 
 /////////////////////////////////// PARSER //////////////////////////////////

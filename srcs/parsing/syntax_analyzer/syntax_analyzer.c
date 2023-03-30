@@ -6,12 +6,13 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 18:12:24 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/27 00:15:29 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/30 01:54:04 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-/////////// ANALYZE FUNCTIONS : Returns 1 if success OR 0 if failure ////////////////
+
+//// STORE ERROR INSIDE A STRING - Display error after HEREDOC
 
 int analyze_redirections (t_data *data)
 {
@@ -88,7 +89,6 @@ t_tokens    *syntax_analyzer (t_data *data)
     t_tokens    *head;
 
     head = data->tokens;
-
     if (!analyze_begin_end(data))
         return (head);
     while (data->tokens != NULL)

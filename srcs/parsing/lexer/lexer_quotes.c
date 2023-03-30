@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:45:24 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/29 23:15:42 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/30 02:58:55 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int q_keyword(t_data *data, char *lexem)
 {
-    t_reference ref;
+    t_ref ref;
 
     ref.l = 0;
     ref.i = 0;
@@ -33,25 +33,24 @@ int q_keyword(t_data *data, char *lexem)
 
 void split_token(t_data *data)
 {
-    int     i;
-    int     add_node;
-    char     *lexem;
     t_tokens *head;
     t_tokens *next;
+    t_ref    ref;
+    char     *lexem;
 
     head = data->tokens;
     next = data->tokens->next;
     lexem = ft_strdup(data->tokens->lex);
     free(data->tokens->lex);
-    add_node = 0;
-    i = 0;
-    while (lexem[i])
+    ref.i = 0;
+    ref.l = 0;
+    while (lexem[ref.i])
     {
-        create_new_node(data, &add_node);
-        if (lexem[i] == EXPAND_)
-            i += expand(data, lexem + i);
-        else if (lexem[i] && lexem[i] != EXPAND_)
-            i += q_keyword(data, lexem + i);
+        create_new_node(data, &ref.l);
+        if (lexem[ref.i] == EXPAND_)
+            ref.i += expand(data, lexem + ref.i);
+        else if (lexem[ref.i] && lexem[ref.i] != EXPAND_)
+            ref.i += q_keyword(data, lexem + ref.i);
         data->tokens->next = next;
     }
     data->tokens = head;

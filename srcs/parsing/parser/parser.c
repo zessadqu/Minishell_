@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:36:39 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/29 21:17:29 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/03/30 03:21:59 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int get_size(t_data *data)
 
 char    **get_cmd_args(t_data *data)
 {
-    t_reference ref;
-    char        **str;
+    t_ref   ref;
+    char    **str;
 
     ref.i = 0;
     str = malloc(sizeof(char *) * (get_size(data) + 1));
@@ -61,8 +61,7 @@ t_exec  *parser(t_data *data)
     ptr = data->tokens;
     while (data->tokens)
     {
-        if (data->tokens && !is_redirection(data->tokens->type) \
-            && data->tokens->type != PIPE)
+        if (data->tokens && data->tokens->type == KEYWORD)
             data->cmds->str = get_cmd_args(data);
         if (!redirection_handler(data))
         {
@@ -75,6 +74,6 @@ t_exec  *parser(t_data *data)
     data->tokens = ptr;
     data->cmds = head;
     //// OPTIONAL FUNCTION CALL
-    //display_cmds(data->cmds);
+    // display_cmds(data->cmds);
     return (head);
 }

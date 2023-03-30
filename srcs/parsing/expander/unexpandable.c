@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 18:12:56 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/29 23:25:14 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/30 02:35:20 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int update_size_(char *lexem, char *pids)
 
 void    non_param (t_data *data, char *lexem, char *pids)
 {
-    t_reference ref;
+    t_ref   ref;
 
     ref.i = 0;
     ref.j = 0;
@@ -54,11 +54,13 @@ void    non_param (t_data *data, char *lexem, char *pids)
         data->tokens->lex[ref.l++] = pids[ref.j++];
     }
     data->tokens->lex[ref.l] = '\0';
+    data->tokens->type = KEYWORD;
+    printf ("%s\n", data->tokens->lex);
 }
 
 void    unexpandable(t_data *data, char *lexem, char *pids)
 {
-    t_reference ref;
+    t_ref   ref;
 
     ref.i = 0;
     ref.j = 0;
@@ -78,5 +80,6 @@ void    unexpandable(t_data *data, char *lexem, char *pids)
     while (lexem[ref.i])
         data->tokens->lex[ref.l++] = lexem[ref.i++];
     data->tokens->lex[ref.l] = '\0';
+    data->tokens->type = KEYWORD;
 }
 

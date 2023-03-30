@@ -6,11 +6,13 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 18:11:47 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/07 16:17:42 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/30 01:55:06 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
+
+//// HANDLE ERROR DISPLAY 
 
 int analyze_begin(t_tokens *token)
 {
