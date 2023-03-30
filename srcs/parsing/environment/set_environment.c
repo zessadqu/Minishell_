@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 16:12:53 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/20 13:38:13 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/30 02:02:04 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int fill_value(t_data *data, char *envp)
 {
-    t_reference ref;
+    t_ref   ref;
 
     ref.l = 1;
     ref.j = 1;
@@ -32,7 +32,7 @@ int fill_value(t_data *data, char *envp)
 
 int fill_name(t_data *data, char *envp)
 {
-    t_reference ref;
+    t_ref   ref;
 
     ref.l = 0;
     ref.i = 0;
@@ -76,18 +76,17 @@ void    init_env_list(t_data *data)
 
 void    set_environment(t_data *data, char **envp)
 {
-    t_reference ref;
-    t_env       *head;
-    int         new_node;
+    t_env   *head;
+    t_ref   ref;
 
     init_env_list(data);
     head = data->env;
     ref.i = 0;
     ref.j = 0;
-    new_node = 0;
+    ref.l = 0;
     while (envp[ref.i])
     {
-        add_node(data, &new_node);
+        add_node(data, &ref.l);
         ref.j = 0;
         while (envp[ref.i][ref.j])
         {  

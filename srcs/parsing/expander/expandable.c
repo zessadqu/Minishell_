@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 18:13:06 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/29 23:17:55 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/30 02:52:55 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void var_not_exist(t_data *data, char *lexem, char *pids)
 {
-    t_reference ref;
-    int size;
+    t_ref   ref;
+    int     size;
 
     ref.i = 0;
     ref.j = 0;
     ref.l = 0;
-    size = update_size(lexem, pids, NULL);
-    if (!size)
+    size = update_size(lexem, pids, NULL, NULL);
+    if (size <= 1)
     {
         data->tokens->lex = NULL;
         data->tokens->type = EMPTY;
@@ -38,92 +38,46 @@ void var_not_exist(t_data *data, char *lexem, char *pids)
                 data->tokens->lex[ref.l++] = lexem[ref.i++];
             data->tokens->lex[ref.l] = '\0';
         }
+        data->tokens->type = KEYWORD;
     }
-}
-
-void var_exist(t_data *data, char *pids, char *value)
-{
-    t_reference ref;
-
-    ref.i = 0;
-    ref.j = 0;
-    ref.l = 0;
-    data->tokens->lex = ft_calloc((update_size(NULL, pids, value)), sizeof(char));
-    while (pids[ref.j + 1])
-        data->tokens->lex[ref.l++] = pids[ref.j++];
-    while (value[ref.i])
-        data->tokens->lex[ref.l++] = value[ref.i++];
-    data->tokens->lex[ref.l] = '\0';
-}
-
-char *get_value(t_data *data, char *var)
-{
-    t_env   *head;
-    char    *value;
-
-    value = NULL;
-    head = data->env;
-    if (!var)
-        return (0);
-    while (data->env)
-    {
-        if (ft_strcmp(var, data->env->name) == 0)
-        {
-            value = ft_strdup(data->env->value);
-            break;
-        }
-        data->env = data->env->next;
-    }
-    free(var);
-    data->env = head;
-    return (value);
-}
-
-char *get_var(t_data *data, char *lexem)
-{
-    int i;
-    int len;
-    char *var;
-
-    len = 0;
-    i = 0;
-    while (lexem[len] && (ft_isalpha(lexem[len]) || \
-        ft_isdigit(lexem[len]) || lexem[len] == '_' || \
-        lexem[len] == '@' || lexem[len] == '*'))
-        len++;
-    var = malloc(sizeof(char) * len + 1);
-    if (!var)
-        exit_error(data, "Minishell: Allocation failed.");
-    while (lexem[i] && (ft_isalpha(lexem[i]) || \
-        ft_isdigit(lexem[i]) || lexem[i] == '_' || \
-        lexem[i] == '@' || lexem[len] == '*'))
-    {
-        var[i] = lexem[i];
-        i++;
-    }
-    var[i] = '\0';
-    return (var);
 }
 
 void    exit_status(t_data *data, char *lexem, char *pids)
 {
-    t_reference ref;
-    int         e;
-    char        *exit_status;
+    t_ref ref;
+    char *e_status;
+    int e;
 
     ref.i = 1;
     ref.j = 0;
     ref.l = 0;
     e = 0;
-    exit_status = ft_itoa(exitS);
-    data->tokens->lex = malloc(sizeof(char) * (update_size(lexem, pids, NULL) + ft_strlen(exit_status)));
+    e_status = ft_itoa(exitS);
+    data->tokens->lex = ft_calloc(update_size(lexem, pids, NULL, e_status), sizeof(char));
     while (pids[ref.j + 1])
         data->tokens->lex[ref.l++] = pids[ref.j++];
-    while (exit_status[e])
-        data->tokens->lex[ref.l++] = exit_status[e++];
+    while (e_status[e])
+        data->tokens->lex[ref.l++] = e_status[e++];
     while (lexem[ref.i])
         data->tokens->lex[ref.l++] = lexem[ref.i++];
     data->tokens->lex[ref.l] = '\0';
+    data->tokens->type = KEYWORD;
+}
+
+void    var_exist(t_data *data, char *pids, char *value)
+{
+    t_ref ref;
+
+    ref.i = 0;
+    ref.j = 0;
+    ref.l = 0;
+    data->tokens->lex = ft_calloc((update_size(NULL, pids, value, NULL)), sizeof(char));
+    while (pids[ref.j + 1])
+        data->tokens->lex[ref.l++] = pids[ref.j++];
+    while (value[ref.i])
+        data->tokens->lex[ref.l++] = value[ref.i++];
+    data->tokens->lex[ref.l] = '\0';
+    data->tokens->type = KEYWORD;
 }
 
 void    expandable(t_data *data, char *lexem, char *pids)

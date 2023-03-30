@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 18:23:06 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/29 22:51:15 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/30 02:11:31 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void    abs_syntax(t_data *data, int lexem_len, int n_quotes)
 {
-    char        *lexem;
-    t_reference ref;
+    t_ref   ref;
+    char    *lexem;
 
     ref.i = 0;
     ref.j = 0;
@@ -60,18 +60,18 @@ int quotes_syntax(char *lexem, int type)
 
 int analyze_quotes (t_data *data)
 {
-    int n_quotes;
+    int n_q;
 
     if (data->tokens->type == DQUOTE || data->tokens->type == SQUOTE)
     {
-        n_quotes = quotes_syntax (data->tokens->lex, data->tokens->type);
-        if (n_quotes == -1)
+        n_q = quotes_syntax (data->tokens->lex, data->tokens->type);
+        if (n_q == -1)
         {
             printf("Minishell: %s: %s\n", data->tokens->lex, "Inclosed quotes");
             data->err = 1;
             return (0);
         }
-        abs_syntax(data, ft_strlen(data->tokens->lex), n_quotes);
+        abs_syntax(data, ft_strlen(data->tokens->lex), n_q);
         if (!data->tokens->lex || ft_strchr(data->tokens->lex, DQUOTE)
             || data->tokens->type == SQUOTE || data->tokens->prev->type == HEREDOC)
         {

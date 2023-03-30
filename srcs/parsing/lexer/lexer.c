@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:13:35 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/29 22:58:20 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/30 01:48:13 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int special_op(t_data *data, char *lexem, int type)
 {
-    t_reference ref;
+    t_ref   ref;
 
     ref.i = 0;
     ref.j = 0;
@@ -34,7 +34,7 @@ int special_op(t_data *data, char *lexem, int type)
 
 int keyword(t_data *data, char *lexem)
 {
-    t_reference ref;
+    t_ref   ref;
 
     ref.i = 0;
     ref.j = 0;
@@ -54,7 +54,7 @@ int keyword(t_data *data, char *lexem)
 
 int expand(t_data *data, char *lexem)
 {
-    t_reference ref;
+    t_ref   ref;
 
     ref.i = 0;
     ref.j = 0;
@@ -80,8 +80,8 @@ int expand(t_data *data, char *lexem)
 
 int quotes(t_data *data, char *lexem, char type)
 {
-    t_reference ref;
-    int         quote;
+    t_ref   ref;
+    int     quote;
 
     quote = 0;
     ref.i = 0;
@@ -114,9 +114,9 @@ int quotes(t_data *data, char *lexem, char type)
 
 t_tokens *lexer(t_data *data)
 {
-    int         i;
-    int         add_node;
     t_tokens    *head;
+    int         add_node;
+    int         i;
     
     head = NULL;
     if (white_check (data->buffer))
