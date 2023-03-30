@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/28 22:31:53 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/03/30 17:42:17 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 #include"../get_next_line/get_next_line.h"
 #include <readline/readline.h>
 #include <readline/history.h>
+#include <sys/stat.h>
 
 extern int exitS;
 
