@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 21:01:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/03/30 18:23:58 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/03/30 20:11:30 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,16 @@ void	cmd_call(t_data *data, int her_file)
 	}
 	st = check_file(data->cmds->str[0]);
 	path = get_path(data->cmds->str[0], data, &check);
-	if (path &&  st== 4)
+	if (path)
+	{
 		execute_command(data->cmds, path, data->envp_);
+		return ;
+	}
+	if (st == 3)
+	{
+		execute_command(data->cmds, data->cmds->str[0], data->envp_);
+		return ;
+	}
 	else if (st == 1)
 	{
 		ft_putstr_fd("minishell: ", 2);
@@ -72,12 +80,6 @@ void	cmd_call(t_data *data, int her_file)
 		ft_putstr_fd(data->cmds->str[0], 2);
 		ft_putstr_fd(": Permission denied	", 2);
 		ft_putstr_fd("\n", 2);
-	}
-	else if (st == 3)
-	{
-		execute_command(data->cmds, data->cmds->str[0], data->envp_);
-		//free here
-		return ;
 	}
 	else
 	{
